@@ -15,8 +15,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--开启注解-->
-    <context:annotation-config/>
+
     <!--注解扫描包-->
     <context:component-scan base-package="com.cjx913.sshjpa" />
 
@@ -82,8 +81,7 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
-    <!-- 使用cglib进行动态代理 -->
-    <aop:aspectj-autoproxy proxy-target-class="true" />
+
 
 
 
@@ -106,7 +104,7 @@
         <aop:advisor pointcut-ref="pt" advice-ref="txAdvice" />
     </aop:config>
     <!-- 支持注解方式声明式事务 -->
-    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+    <tx:annotation-driven transaction-manager="transactionManager" />
 
 
 
